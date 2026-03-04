@@ -1,35 +1,26 @@
 # Auto detect text files and normalize line endings to LF
 * text=auto
 
-# Source code languages
-*.ts linguist-language=TypeScript
-*.tsx linguist-language=TypeScript
+# EXPLICITLY mark all TypeScript/JavaScript files as vendored
+*.ts linguist-vendored
+*.tsx linguist-vendored
+*.js linguist-vendored
+*.jsx linguist-vendored
+src/ linguist-vendored
+components/ linguist-vendored
+
+# Include Rust as PRIMARY language
 *.rs linguist-language=Rust
 *.toml linguist-language=TOML
-
-# Explicitly include ALL Rust files (highest priority)
-*.rs linguist-language=Rust -linguist-vendored
 PrivatePokerContract.rs linguist-language=Rust -linguist-vendored
 programs/privatepoker/src/** linguist-language=Rust -linguist-vendored
-programs/privatepoker/src/lib.rs linguist-language=Rust -linguist-vendored
 
-# Exclude test files and build artifacts from language stats
+# Exclude test and build files
 test_*.js linguist-vendored
 test_*.mjs linguist-vendored
 test_*.ts linguist-vendored
-verify_deployment.js linguist-vendored
-transfer_funds.js linguist-vendored
-*.test.ts linguist-vendored
-*.spec.ts linguist-vendored
 node_modules/ linguist-vendored
 .next/ linguist-vendored
 target/ linguist-vendored
-dist/ linguist-vendored
-build/ linguist-vendored
 *.lock linguist-vendored
-src/**/*.test.ts linguist-vendored
-src/**/*.spec.ts linguist-vendored
-
-# Document files
-*.md linguist-documentation
 *.md linguist-documentation
