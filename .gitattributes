@@ -7,6 +7,9 @@
 *.rs linguist-language=Rust
 *.toml linguist-language=TOML
 
+# Explicitly include Rust program files
+programs/privatepoker/src/lib.rs linguist-language=Rust -linguist-vendored
+
 # Ignore test files and build artifacts in language stats
 test_*.js linguist-vendored
 test_*.mjs linguist-vendored
