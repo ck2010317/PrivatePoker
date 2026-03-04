@@ -37,15 +37,15 @@ export default function BettingPanel({ walletAddress, walletName }: BettingPanel
     <motion.div
       initial={{ x: 100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      className="bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-5 w-full"
+      className="bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl md:rounded-3xl p-4 md:p-5 w-full max-w-sm mx-auto lg:mx-0"
     >
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-3 md:mb-4">
         <div className="flex items-center gap-2">
-          <span className="text-xl">🎰</span>
-          <h3 className="text-white font-bold text-lg">Betting Pool</h3>
+          <span className="text-lg md:text-xl">🎰</span>
+          <h3 className="text-white font-bold text-base md:text-lg">Betting Pool</h3>
         </div>
-        <div className={`px-2 py-1 rounded-full text-xs font-bold ${isBettingOpen ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
+        <div className={`px-2 py-1 rounded-full text-[10px] md:text-xs font-bold ${isBettingOpen ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
           {isBettingOpen ? "OPEN" : "CLOSED"}
         </div>
       </div>

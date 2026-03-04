@@ -14,31 +14,32 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed top-0 left-0 right-0 z-50 px-4 py-3"
+      className="fixed top-0 left-0 right-0 z-50 px-2 md:px-4 py-2 md:py-3"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between bg-gray-900/80 backdrop-blur-xl rounded-2xl px-5 py-3 border border-gray-700/50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between bg-gray-900/80 backdrop-blur-xl rounded-xl md:rounded-2xl px-3 md:px-5 py-2 md:py-3 border border-gray-700/50">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-shrink-0">
           <motion.span
             animate={{ rotateY: [0, 360] }}
             transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            className="text-2xl"
+            className="text-lg md:text-2xl flex-shrink-0"
           >
             🃏
           </motion.span>
-          <div>
-            <h1 className="text-white font-black text-lg leading-none">
+          <div className="hidden sm:block">
+            <h1 className="text-white font-black text-sm md:text-lg leading-none">
               Private<span className="text-yellow-400">Poker</span>
             </h1>
-            <span className="text-gray-500 text-[10px]">
-              on MagicBlock TEE
+            <span className="text-gray-500 text-[8px] md:text-[10px]">
+              on MagicBlock
             </span>
           </div>
+          <div className="sm:hidden text-white font-black text-xs">🃏</div>
         </div>
 
         {/* Center: Game Info */}
         {phase !== "lobby" && (
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3">
             <div className="flex items-center gap-2 px-3 py-1 bg-gray-800/80 rounded-full">
               <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
               <span className="text-gray-300 text-xs">
@@ -55,11 +56,11 @@ export default function Navbar() {
         )}
 
         {/* Right: Wallet */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3 flex-shrink-0 ml-auto">
           {connected && publicKey && (
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-gray-800/80 rounded-full">
+            <div className="hidden sm:flex items-center gap-2 px-2 md:px-3 py-1 md:py-1.5 bg-gray-800/80 rounded-full">
               <div className="w-2 h-2 bg-emerald-400 rounded-full" />
-              <span className="text-gray-300 text-xs font-mono">
+              <span className="text-gray-300 text-[9px] md:text-xs font-mono">
                 {shortenPubkey(publicKey.toBase58())}
               </span>
             </div>
@@ -67,10 +68,10 @@ export default function Navbar() {
           <WalletMultiButton
             style={{
               background: "linear-gradient(135deg, #f59e0b, #ef4444)",
-              borderRadius: "12px",
-              fontSize: "13px",
-              height: "38px",
-              padding: "0 16px",
+              borderRadius: "8px",
+              fontSize: "11px",
+              height: "32px",
+              padding: "0 12px",
               fontWeight: "bold",
             }}
           />

@@ -642,7 +642,7 @@ export default function Home() {
       <Navbar />
 
       {/* Main Content */}
-      <main className="pt-24 pb-12 px-4">
+      <main className="pt-16 sm:pt-20 pb-24 px-2 sm:px-3 md:px-4 lg:pt-24">
         {(phase === "lobby" || (phase === "waiting" && mode === "multiplayer")) ? (
           <GameLobby
             walletAddress={publicKey.toBase58()}
@@ -652,15 +652,15 @@ export default function Home() {
             onJoinMultiplayer={handleJoinMultiplayer}
           />
         ) : (
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr_300px] gap-6 items-start">
-            {/* Left Panel — Game Info + Transactions */}
-            <div className="hidden lg:block space-y-4">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[240px_1fr_280px] gap-3 md:gap-4 lg:gap-6 items-start auto-rows-max lg:auto-rows-start">
+            {/* Left Panel — Game Info + Transactions (Hidden on mobile, shown on lg+) */}
+            <div className="hidden lg:block space-y-4 order-2 lg:order-1">
               <GameInfo />
               <TransactionFeed />
             </div>
 
             {/* Center — Poker Table */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center w-full order-1 lg:order-2">
               <PokerTable />
 
               {/* Game Over buttons */}
@@ -731,8 +731,8 @@ export default function Home() {
               )}
             </div>
 
-            {/* Right Panel — Betting */}
-            <div>
+            {/* Right Panel — Betting (Responsive width) */}
+            <div className="w-full lg:w-auto order-3">
               <BettingPanel
                 walletAddress={publicKey.toBase58()}
                 walletName={publicKey.toBase58().slice(0, 6)}
@@ -742,11 +742,9 @@ export default function Home() {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 py-2 text-center pointer-events-none z-0">
-        <div className="text-gray-600 text-[10px]">
-          Private Poker • Program: 7qRu72w...zkqK • {isDelegated ? "⚡ MagicBlock ER Active" : isOnChain ? `⛓️ Game #${onChainGameId} On-Chain` : "MagicBlock Ephemeral Rollup"} • Solana Devnet
-        </div>
+      {/* Mobile Footer with Key Info */}
+      <footer className="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur border-t border-slate-800 py-1 text-center text-[9px] md:text-[10px] text-gray-500 z-40 pointer-events-none">
+        {isDelegated ? "⚡ MagicBlock ER Active" : isOnChain ? `⛓️ Game #${onChainGameId}` : "Private Poker"}
       </footer>
     </div>
   );

@@ -40,23 +40,23 @@ export default function PokerTable() {
   };
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto">
+    <div className="relative w-full max-w-2xl md:max-w-3xl mx-auto px-0">
       {/* Outer glow */}
-      <div className="absolute -inset-4 bg-gradient-to-br from-emerald-900/20 via-transparent to-emerald-900/20 rounded-[3rem] blur-xl" />
+      <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-br from-emerald-900/20 via-transparent to-emerald-900/20 rounded-3xl md:rounded-[3rem] blur-xl" />
 
       {/* Table */}
       <div
-        className="relative rounded-[2.5rem] p-1"
+        className="relative rounded-3xl md:rounded-[2.5rem] p-1"
         style={{
           background: "linear-gradient(135deg, #5c3d1e 0%, #8B6914 30%, #5c3d1e 70%, #3d2a11 100%)",
         }}
       >
         {/* Inner felt */}
         <div
-          className="relative rounded-[2.2rem] overflow-hidden"
+          className="relative rounded-3xl md:rounded-[2.2rem] overflow-hidden"
           style={{
             background: "radial-gradient(ellipse at center, #1a6b3c 0%, #145a30 40%, #0d4a25 70%, #0a3b1e 100%)",
-            minHeight: "520px",
+            minHeight: "auto",
           }}
         >
           {/* Felt texture overlay */}
@@ -68,25 +68,25 @@ export default function PokerTable() {
           />
 
           {/* Inner border line */}
-          <div className="absolute inset-6 border-2 border-yellow-700/20 rounded-[2rem] pointer-events-none" />
+          <div className="absolute inset-4 md:inset-6 border-2 border-yellow-700/20 rounded-2xl md:rounded-[2rem] pointer-events-none" />
 
           {/* Game Phase Badge */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+          <div className="absolute top-2 md:top-4 left-1/2 -translate-x-1/2 z-10">
             <motion.div
               key={phase}
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="px-4 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-yellow-500/30"
+              className="px-3 md:px-4 py-1 md:py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-yellow-500/30"
             >
-              <span className="text-yellow-400 text-xs font-bold tracking-wider uppercase">
+              <span className="text-yellow-400 text-[10px] md:text-xs font-bold tracking-wider uppercase">
                 {phaseLabels[phase]}
               </span>
             </motion.div>
           </div>
 
           {/* Privacy Badge */}
-          <div className="absolute top-4 right-6 z-10">
-            <div className={`flex items-center gap-1.5 px-3 py-1.5 backdrop-blur-md rounded-full border ${
+          <div className="absolute top-2 md:top-4 right-4 md:right-6 z-10">
+            <div className={`flex items-center gap-1.5 px-2 md:px-3 py-1 md:py-1.5 backdrop-blur-md rounded-full border text-[9px] md:text-[10px] ${
               isOnChain
                 ? "bg-emerald-500/10 border-emerald-500/30"
                 : "bg-gray-500/10 border-gray-500/30"
@@ -94,18 +94,18 @@ export default function PokerTable() {
               <div className={`w-2 h-2 rounded-full animate-pulse ${
                 isOnChain ? "bg-emerald-400" : "bg-gray-400"
               }`} />
-              <span className={`text-[10px] font-medium ${
+              <span className={`font-medium ${
                 isOnChain ? "text-emerald-300" : "text-gray-400"
               }`}>
-                {isOnChain ? "⛓️ On-Chain" : "Offline"}
+                {isOnChain ? "⛓️" : "📱"}
               </span>
             </div>
           </div>
 
           {/* Content */}
-          <div className="relative z-10 flex flex-col items-center justify-between h-full min-h-[520px] py-12 px-6">
+          <div className="relative z-10 flex flex-col items-center justify-between h-full min-h-[380px] md:min-h-[520px] py-8 md:py-12 px-4 md:px-6">
             {/* Opponent (top) */}
-            <div className="relative">
+            <div className="relative w-full flex justify-center">
               <PlayerSeat
                 player={myPlayerIndex === 0 ? player2 : player1}
                 position="top"
@@ -123,9 +123,9 @@ export default function PokerTable() {
                     initial={{ opacity: 0, y: -10, scale: 0.9 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.9 }}
-                    className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap
-                      px-3 py-1 bg-gray-800/90 backdrop-blur-sm rounded-lg border border-gray-600
-                      text-gray-200 text-xs font-medium shadow-lg z-20"
+                    className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                      px-2 md:px-3 py-1 bg-gray-800/90 backdrop-blur-sm rounded-lg border border-gray-600
+                      text-gray-200 text-[9px] md:text-xs font-medium shadow-lg z-20"
                   >
                     {aiMessage}
                   </motion.div>
@@ -134,18 +134,18 @@ export default function PokerTable() {
             </div>
 
             {/* Center Area: Community Cards + Pot */}
-            <div className="flex flex-col items-center gap-4 my-4">
+            <div className="flex flex-col items-center gap-2 md:gap-4 my-2 md:my-4">
               {/* Pot */}
               <AnimatePresence>
                 {pot > 0 && (
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="flex items-center gap-2 px-5 py-2 bg-black/40 backdrop-blur-md rounded-2xl border border-yellow-500/30"
+                    className="flex items-center gap-2 px-3 md:px-5 py-1 md:py-2 bg-black/40 backdrop-blur-md rounded-lg md:rounded-2xl border border-yellow-500/30"
                   >
-                    <span className="text-2xl">💰</span>
+                    <span className="text-lg md:text-2xl">💰</span>
                     <div className="flex flex-col">
-                      <span className="text-yellow-400 font-bold text-xl">
+                      <span className="text-yellow-400 font-bold text-sm md:text-xl">
                         {(pot / 1e9).toFixed(2)} SOL
                       </span>
                       <span className="text-yellow-600 text-[10px]">

@@ -34,48 +34,48 @@ export default function GameLobby({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-lg mx-auto"
+        className="w-full max-w-md md:max-w-lg mx-auto px-3 md:px-0"
       >
-        <div className="text-center mb-8">
+        <div className="text-center mb-6 md:mb-8">
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-            className="text-7xl mb-4"
+            className="text-5xl md:text-7xl mb-3 md:mb-4"
           >
             ⏳
           </motion.div>
-          <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500 mb-2">
+          <h1 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500 mb-1 md:mb-2">
             Waiting for Opponent
           </h1>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-xs md:text-sm">
             Share the room code below with your opponent
           </p>
         </div>
 
-        <div className="bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-3xl overflow-hidden p-8">
+        <div className="bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl md:rounded-3xl overflow-hidden p-5 md:p-8">
           {/* Room Code Display */}
-          <div className="text-center mb-6">
-            <p className="text-gray-500 text-xs font-medium mb-2 uppercase tracking-wider">Room Code</p>
+          <div className="text-center mb-4 md:mb-6">
+            <p className="text-gray-500 text-[10px] md:text-xs font-medium mb-2 uppercase tracking-wider">Room Code</p>
             <div
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gray-800/80 rounded-2xl border-2 border-yellow-500/40 cursor-pointer hover:border-yellow-400/60 transition-all"
+              className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-gray-800/80 rounded-lg md:rounded-2xl border-2 border-yellow-500/40 cursor-pointer hover:border-yellow-400/60 transition-all"
               onClick={() => navigator.clipboard.writeText(gameId)}
             >
-              <span className="text-yellow-400 text-4xl font-black tracking-[0.3em] font-mono">
+              <span className="text-yellow-400 text-2xl md:text-4xl font-black tracking-[0.2em] md:tracking-[0.3em] font-mono">
                 {gameId}
               </span>
               <span className="text-gray-500 text-lg">📋</span>
             </div>
-            <p className="text-gray-600 text-xs mt-2">Click to copy</p>
+            <p className="text-gray-600 text-[9px] md:text-xs mt-1 md:mt-2">Click to copy</p>
           </div>
 
           {/* Animated dots */}
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-3 md:mb-4">
             {[0, 1, 2].map(i => (
               <motion.div
                 key={i}
                 animate={{ scale: [1, 1.5, 1], opacity: [0.3, 1, 0.3] }}
                 transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.3 }}
-                className="w-3 h-3 bg-yellow-400 rounded-full"
+                className="w-2 md:w-3 h-2 md:h-3 bg-yellow-400 rounded-full"
               />
             ))}
           </div>
