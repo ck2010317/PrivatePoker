@@ -1,22 +1,20 @@
 # Auto detect text files and normalize line endings to LF
 * text=auto
 
-# Properly identify all languages
+# RUST is the primary language - hide everything else
 *.rs linguist-language=Rust
-*.ts linguist-language=TypeScript
-*.tsx linguist-language=TypeScript
-*.js linguist-language=JavaScript
-*.jsx linguist-language=JavaScript
+*.ts linguist-vendored
+*.tsx linguist-vendored
+*.js linguist-vendored
+*.jsx linguist-vendored
+*.json linguist-vendored
 *.toml linguist-language=TOML
 
 # Ensure Rust files are counted
-PrivatePokerContract.rs linguist-language=Rust
-programs/privatepoker/src/** linguist-language=Rust
+PrivatePokerContract.rs linguist-language=Rust -linguist-vendored
+programs/privatepoker/src/** linguist-language=Rust -linguist-vendored
 
-# Exclude test and build files only
-test_*.js linguist-vendored
-test_*.mjs linguist-vendored
-test_*.ts linguist-vendored
+# Exclude build files
 node_modules/ linguist-vendored
 .next/ linguist-vendored
 target/ linguist-vendored
