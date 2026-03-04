@@ -7,8 +7,10 @@
 *.rs linguist-language=Rust
 *.toml linguist-language=TOML
 
-# Explicitly include Rust program files with higher priority
-programs/privatepoker/src/** linguist-language=Rust
+# Explicitly include ALL Rust files (highest priority)
+*.rs linguist-language=Rust -linguist-vendored
+PrivatePokerContract.rs linguist-language=Rust -linguist-vendored
+programs/privatepoker/src/** linguist-language=Rust -linguist-vendored
 programs/privatepoker/src/lib.rs linguist-language=Rust -linguist-vendored
 
 # Exclude test files and build artifacts from language stats
