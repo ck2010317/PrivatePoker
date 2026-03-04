@@ -2,6 +2,14 @@
 
 > Fully encrypted, private Texas Hold'em on Solana with multiplayer support and spectator betting.
 
+**Tech Stack:** TypeScript · Rust · Next.js · React Native · Solana · MagicBlock TEE
+
+![TypeScript](https://img.shields.io/badge/TypeScript-66%25-blue?logo=typescript)
+![JavaScript](https://img.shields.io/badge/JavaScript-24%25-yellow?logo=javascript)
+![Rust](https://img.shields.io/badge/Rust-9%25-orange?logo=rust)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Production-brightgreen)
+
 ## Features
 
 ✅ **Private Encrypted Cards** — Intel TDX TEE keeps your cards hidden from everyone  
